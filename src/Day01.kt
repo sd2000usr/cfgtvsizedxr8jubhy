@@ -19,33 +19,22 @@ fun main()
                 tem += line.toInt()
         }
 
+        elfList.add(tem)
 
         return input.size
     }
 
-    // get higher index
-    fun elfWithMoreSnacksIndex(input: List<String>): Int
+    fun principalElfCalories(elfAmount: Int): Int // index, calories
     {
-        var elfIndex = 0
-        var acc = 0
+        var calories = 0
 
-        elfList.forEachIndexed ()
-        { index, calories ->
-
-            if (calories > acc)
-            {
-                elfIndex = index
-                acc = calories
-            }
-
+        for (index in 0 until elfAmount)
+        {
+            calories += elfList[index]
         }
 
-        return elfIndex
-    }
+        return calories
 
-    fun elfCaloriesCarryOf(index: Int): Int
-    {
-        return elfList[index]
     }
 
     fun debug()
@@ -54,16 +43,22 @@ fun main()
         elfList.forEachIndexed { index, i -> println("[$index] $i") }
     }
 
-    // test if implementation meets criteria from the description, like:
-    /*val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)*/
-
     val input = readInput("Day01")
+    //val input = readInput("test")
+
     loadList(input)
+    elfList.sortDescending()
 
-    val elfWithMoreSnacksIndex = elfWithMoreSnacksIndex(input)
-    println("whoGotMoreSnacks index: ${elfWithMoreSnacksIndex}, calories: ${elfCaloriesCarryOf(elfWithMoreSnacksIndex)}")
+    val elfWithMoreSnacksIndex = elfList[0]
+    println("elf with more snacks has: $elfWithMoreSnacksIndex calories")
 
-    debug()
+    val principalsElfAmount = 3
+    val principalsCalories = principalElfCalories(principalsElfAmount)
+
+    println("principals $principalsElfAmount elf's with more snacks has $principalsCalories, calories together.")
+
+
+    println()
+    //debug()
 
 }

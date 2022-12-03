@@ -77,7 +77,7 @@ fun part2(input: List<String>)
 {
 
 
-    fun charTimesAppearMap(string: String): Map<Char, Int>
+    fun mapOfCharAndTimesAppears(string: String): Map<Char, Int>
     {
         val map = mutableMapOf<Char, Int>() // char, times appear
 
@@ -159,7 +159,7 @@ fun part2(input: List<String>)
     while (index < input.size)
     {
         val string = input[index]
-        val newMap = charTimesAppearMap(string)
+        val newMap = mapOfCharAndTimesAppears(string)
 
 
         if ((index + 1) % 3 == 0)
